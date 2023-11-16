@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "14e0c4d7-950d-4eb2-b6d7-2ffb7011e004",
+		"name": "demo-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1453931",
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/RVP~2d2b5a97-7348-4a12-9b95-e451cb6e5db4/collection/1453931-14e0c4d7-950d-4eb2-b6d7-2ffb7011e004?action=share&source=collection_link&creator=1453931"
+	},
+	"item": [
+		{
+			"name": "https://jsonplaceholder.typicode.com/users/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"pm.test(\"Response body has the required properties\", function () {",
+							"    var response = pm.response.json();",
+							"  ",
+							"    pm.expect(response).to.have.property('id');",
+							"    pm.expect(response).to.have.property('name');",
+							"    pm.expect(response).to.have.property('username');",
+							"    pm.expect(response).to.have.property('email');",
+							"    pm.expect(response).to.have.property('address');",
+							"    pm.expect(response).to.have.property('phone');",
+							"    pm.expect(response).to.have.property('website');",
+							"    pm.expect(response).to.have.property('company');",
+							"  ",
+							"    var address = response.address;",
+							"    pm.expect(address).to.have.property('street');",
+							"    pm.expect(address).to.have.property('suite');",
+							"    pm.expect(address).to.have.property('city');",
+							"    pm.expect(address).to.have.property('zipcode');",
+							"  ",
+							"    var geo = address.geo;",
+							"    pm.expect(geo).to.have.property('lat');",
+							"    pm.expect(geo).to.have.property('lng');",
+							"  ",
+							"    var company = response.company;",
+							"    pm.expect(company).to.have.property('name');",
+							"    pm.expect(company).to.have.property('catchPhrase');",
+							"    pm.expect(company).to.have.property('bs');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
